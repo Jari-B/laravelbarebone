@@ -13,12 +13,15 @@
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "sentry/sentry-laravel": "^1.7"
     },
     "require-dev": {
+        "deployer/deployer": "^6.8",
         "facade/ignition": "^2.0",
         "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.3.1",
+        "mpociot/laravel-apidoc-generator": "^4.8",
         "nunomaduro/collision": "^4.1",
         "phpunit/phpunit": "^8.5"
     },
@@ -58,6 +61,11 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "post-install-cmd": [
+            "php artisan migrate",
+            "php artisan clear-compiled",
+            "php artisan optimize"
         ]
     }
 }
